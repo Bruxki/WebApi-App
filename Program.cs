@@ -3,12 +3,14 @@ using WebApplication2.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
+//dependency injection
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-//no clue what this does
+//temporary solution
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseInMemoryDatabase("TestDatabase"));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
