@@ -1,6 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using WebApplication2.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+
+//no clue what this does
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
